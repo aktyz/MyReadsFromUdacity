@@ -11,6 +11,10 @@ To get started developing right away:
 
 The app should run on [localhost:3000](http://localhost:3000/).
 
+## Instructions for Git Commit messages
+
+Follow Udacity Git Commit Message [Style Guide](https://udacity.github.io/git-styleguide/).
+
 # Rest of the orginal README to be removed before submitting
 
 ## What You're Getting
