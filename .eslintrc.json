@@ -1,7 +1,7 @@
 {
     "env": {
         "browser": true,
-        "es2020": true,
+        "es2021": true,
         "node": true
     },
     "extends": [
@@ -13,19 +13,20 @@
         "ecmaFeatures": {
             "jsx": true
         },
-        "ecmaVersion": 11,
+        "ecmaVersion": 12,
         "sourceType": "module"
     },
     "plugins": [
         "react"
     ],
+    "ignorePatterns": [
+      "./node_modules"
+    ],
     "rules": {
+        "react/prop-types": 1,
         "indent": [
             "error",
             4
-        ],
-        "no-mixed-spaces-and-tabs": [
-          "error"
         ],
         "linebreak-style": [
             "error",
@@ -38,39 +39,6 @@
         "semi": [
             "error",
             "always"
-        ],
-        "no-trailing-spaces": [
-            "error",
-            {
-              "skipBlankLines": false,
-              "ignoreComments": false
-            }
-        ],
-        "no-new-wrappers": [
-          "error"
-        ],
-        "prefer-template": [
-          "error"
-        ],
-        "no-multi-str": [
-          "error"
-        ],
-        "curly": [
-          "error"
-        ],
-        "brace-style": [
-          "error"
-        ],
-        "object-curly-spacing": [
-          "error",
-          "never"
-        ],
-        "array-bracket-spacing": [
-          "error",
-          "never"
-        ],
-        "no-extra-parens": [
-          "error"
         ]
     }
 }

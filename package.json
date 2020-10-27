@@ -12,7 +12,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint ./ --fix-dry-run"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -24,6 +25,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "eslint": "^5.6.0"
+    "eslint": "7.12.1",
+    "eslint-plugin-react": "7.21.5"
   }
 }
