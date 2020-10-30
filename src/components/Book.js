@@ -1,4 +1,6 @@
 import * as React from 'react';
+import PropTypes from 'prop-types';
+
 import { BookShelfChanger } from './BookShelfChanger';
 
 export function Book(props) {
@@ -12,3 +14,11 @@ export function Book(props) {
             <div className="book-authors">{props.bookAuthors}</div>
         </div>);
 }
+
+Book.propTypes = {
+    bookCoverURL: PropTypes.string.isRequired,
+    bookTitle: PropTypes.string.isRequired,
+    bookAuthors: PropTypes.string.isRequired
+};
+
+export default Book;
