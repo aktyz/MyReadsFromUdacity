@@ -23,7 +23,6 @@
       "./node_modules"
     ],
     "rules": {
-        "react/prop-types": 1,
         "indent": [
             "error",
             4
