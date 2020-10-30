@@ -4,7 +4,7 @@ class SearchPage extends Component {
   state = {
       query: ''
   }
-  
+
   updateQuery = (query) => {
       this.setState(() => ({
           query: query
