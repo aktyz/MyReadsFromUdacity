@@ -22,6 +22,12 @@
     "ignorePatterns": [
       "./node_modules"
     ],
+    "globals": {
+      "describe": "readonly",
+      "it": "readonly",
+      "expect": "readonly",
+      "jest": "readonly"
+    },
     "rules": {
         "indent": [
             "error",
