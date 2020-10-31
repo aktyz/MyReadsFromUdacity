@@ -1,7 +1,7 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 
-import { BookShelfChanger } from './BookShelfChanger';
+import BookShelfChanger from './BookShelfChanger';
 
 export function Book(props) {
     return (

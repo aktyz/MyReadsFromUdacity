@@ -14,7 +14,6 @@ const staticBooks = [
 class BooksApp extends React.Component {
   state = {
       showSearchPage: false,
-      query: ''
   }
 
   onSearchClick = () => {

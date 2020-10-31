@@ -12,3 +12,5 @@ export function BookShelfChanger() {
             </select>
         </div>);
 }
+
+export default BookShelfChanger;
