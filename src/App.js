@@ -17,11 +17,9 @@ class BooksApp extends React.Component {
       query: ''
   }
 
-onSearchClick = () => {
+  onSearchClick = () => {
     this.setState({showSearchPage: true});
-}
-
-
+  }
 
   onReturnClick = () => {
       this.setState({showSearchPage: false});
