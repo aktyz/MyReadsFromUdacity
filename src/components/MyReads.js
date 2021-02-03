@@ -23,7 +23,11 @@ class MyReads extends Component {
 }
 
 MyReads.propTypes = {
-    userBooks: PropTypes.object.isRequired
+    userBooks: PropTypes.exact({
+        currentlyReading: PropTypes.array.isRequired,
+        wantToRead: PropTypes.array.isRequired,
+        read: PropTypes.array.isRequired,
+    })
 };
 
 export default MyReads;

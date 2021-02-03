@@ -1,11 +1,11 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import MyReads from './MyReads';
-import { staticBooksMock } from './__mock__/mockData';
+import { userBooksMock } from './__mock__/mockData';
 
 describe('MyReads', () => {
     it('should render three bookshelfs', () => {
-        const myReadsComponent = render(<MyReads staticBooks = { staticBooksMock } />);
+        const myReadsComponent = render(<MyReads userBooks = { userBooksMock } />);
         expect(myReadsComponent).toMatchSnapshot();
     });
 });

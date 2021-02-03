@@ -1,14 +1,14 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import Book from './Book';
-import { staticBooksMock } from './__mock__/mockData';
+import { bookMock } from './__mock__/mockData';
 
 describe('Book', () => {
     it('should render book representation', () => {
         const bookComponent = render(<Book
-            bookCoverURL = {staticBooksMock[0].bookCoverURL}
-            bookTitle = {staticBooksMock[0].bookTitle}
-            bookAuthors = {staticBooksMock[0].bookAuthors} />);
+            bookCoverURL = {bookMock.bookCoverURL}
+            bookTitle = {bookMock.bookTitle}
+            bookAuthors = {bookMock.bookAuthors} />);
         expect(bookComponent).toMatchSnapshot();
     });
 });
