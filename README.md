@@ -12,7 +12,10 @@ To get started developing right away:
 The app should run on [localhost:3000](http://localhost:3000/).
 
 ## Next steps
-- add propTypes
+- add Shelfs ENUM: 'currentlyReading', 'wantToRead', 'read', 'none'
+- add App state update functions - add to shelf, remove from shelf
+- pass the callback down to the Book button
+- ShearchResult as a 'DEFAULT' shelf
 
 ## Instructions for Git Commit messages
 

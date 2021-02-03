@@ -12,9 +12,9 @@ class MyReads extends Component {
                 </div>
                 <div className="list-books-content">
                     <div>
-                        <Bookshelf bookshelfTitle='Currently Reading' shelfBooks={this.props.staticBooks}/>
-                        <Bookshelf bookshelfTitle='Want to Read' shelfBooks={this.props.staticBooks}/>
-                        <Bookshelf bookshelfTitle='Read' shelfBooks={this.props.staticBooks}/>
+                        <Bookshelf bookshelfTitle='Currently Reading' shelfBooks={this.props.userBooks.currentlyReading}/>
+                        <Bookshelf bookshelfTitle='Want to Read' shelfBooks={this.props.userBooks.wantToRead}/>
+                        <Bookshelf bookshelfTitle='Read' shelfBooks={this.props.userBooks.read}/>
                     </div>
                 </div>
             </div>
@@ -23,7 +23,7 @@ class MyReads extends Component {
 }
 
 MyReads.propTypes = {
-    staticBooks: PropTypes.array.isRequired
+    userBooks: PropTypes.object.isRequired
 };
 
 export default MyReads;
