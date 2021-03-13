@@ -11,14 +11,14 @@ export function Book(props) {
                 <BookShelfChanger />
             </div>
             <div className="book-title">{props.bookTitle}</div>
-            <div className="book-authors">{props.bookAuthors}</div>
+            <div className="book-authors">{props.bookAuthors.join(', ')}</div>
         </div>);
 }
 
 Book.propTypes = {
     bookCoverURL: PropTypes.string.isRequired,
     bookTitle: PropTypes.string.isRequired,
-    bookAuthors: PropTypes.string.isRequired
+    bookAuthors: PropTypes.array.isRequired,
 };
 
 export default Book;

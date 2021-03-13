@@ -7,7 +7,7 @@ describe('Book', () => {
         const bookComponent = render(<Book
             bookCoverURL = 'bookCoverURLMock'
             bookTitle = 'To Kill a Mockingbird'
-            bookAuthors = 'Harper Lee' />);
+            bookAuthors = {['Harper Lee', 'Dummy Mock']} />);
         expect(bookComponent).toMatchSnapshot();
     });
 });

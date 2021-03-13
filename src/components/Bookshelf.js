@@ -13,7 +13,7 @@ export function Bookshelf(props) {
                         <li key={book.title}>
                             <Book
                                 bookTitle={book.title}
-                                bookAuthors={book.authors[0]}
+                                bookAuthors={book.authors}
                                 bookCoverURL={book.imageLinks.thumbnail}/>
                         </li>
                     ))}
@@ -25,7 +25,7 @@ export function Bookshelf(props) {
 
 Bookshelf.propTypes = {
     bookshelfTitle: PropTypes.string.isRequired,
-    shelfBooks: PropTypes.array.isRequired
+    shelfBooks: PropTypes.array.isRequired,
 };
 
 export default Bookshelf;
