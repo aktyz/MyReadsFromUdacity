@@ -10,11 +10,11 @@ export function Bookshelf(props) {
             <div className="bookshelf-books">
                 <ol className="books-grid">
                     {props.shelfBooks.map((book) => (
-                        <li key={book.bookTitle}>
+                        <li key={book.title}>
                             <Book
-                                bookTitle={book.bookTitle}
-                                bookAuthors={book.bookAuthors}
-                                bookCoverURL={book.bookCoverURL}/>
+                                bookTitle={book.title}
+                                bookAuthors={book.authors}
+                                bookCoverURL={book.imageLinks.thumbnail}/>
                         </li>
                     ))}
                 </ol>
@@ -25,7 +25,7 @@ export function Bookshelf(props) {
 
 Bookshelf.propTypes = {
     bookshelfTitle: PropTypes.string.isRequired,
-    shelfBooks: PropTypes.array.isRequired
+    shelfBooks: PropTypes.array.isRequired,
 };
 
 export default Bookshelf;
