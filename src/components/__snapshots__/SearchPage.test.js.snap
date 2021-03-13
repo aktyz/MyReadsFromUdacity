@@ -11,11 +11,12 @@ Object {
         <div
           class="search-books-bar"
         >
-          <button
+          <a
             class="close-search"
+            href="/"
           >
             Close
-          </button>
+          </a>
           <div
             class="search-books-input-wrapper"
           >
@@ -43,11 +44,12 @@ Object {
       <div
         class="search-books-bar"
       >
-        <button
+        <a
           class="close-search"
+          href="/"
         >
           Close
-        </button>
+        </a>
         <div
           class="search-books-input-wrapper"
         >
@@ -132,11 +134,12 @@ Object {
         <div
           class="search-books-bar"
         >
-          <button
+          <a
             class="close-search"
+            href="/"
           >
             Close
-          </button>
+          </a>
           <div
             class="search-books-input-wrapper"
           >
@@ -164,11 +167,12 @@ Object {
       <div
         class="search-books-bar"
       >
-        <button
+        <a
           class="close-search"
+          href="/"
         >
           Close
-        </button>
+        </a>
         <div
           class="search-books-input-wrapper"
         >
