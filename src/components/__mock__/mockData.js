@@ -1,18 +1,19 @@
 export const bookshelfTitleMock = 'Mock of a Bookshelf';
-export const userBooksMock = {
-    currentlyReading: [
-        {
-            'bookTitle': 'To Kill a Mockingbird',
-            'bookAuthors': 'Harper Lee',
-            'bookCoverURL': 'bookCoverURLMock'
-        }
-    ],
-    wantToRead: [],
-    read: [],
-};
+export const userBooksMock = [{
+    'title': 'To Kill a Mockingbird',
+    'authors': ['Harper Lee'],
+    'shelf': 'currentlyReading',
+    'imageLinks': {
+        'thumbnail': 'bookCoverURLMock'
+    },
+}
+];
 
 export const bookMock = {
-    'bookTitle': 'To Kill a Mockingbird',
-    'bookAuthors': 'Harper Lee',
-    'bookCoverURL': 'bookCoverURLMock'
+    'title': 'To Kill a Mockingbird',
+    'authors': ['Harper Lee'],
+    'shelf': 'currentlyReading',
+    'imageLinks': {
+        'thumbnail': 'bookCoverURLMock'
+    },
 };

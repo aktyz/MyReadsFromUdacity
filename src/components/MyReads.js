@@ -12,9 +12,9 @@ class MyReads extends Component {
                 </div>
                 <div className="list-books-content">
                     <div>
-                        <Bookshelf bookshelfTitle='Currently Reading' shelfBooks={this.props.userBooks.currentlyReading}/>
-                        <Bookshelf bookshelfTitle='Want to Read' shelfBooks={this.props.userBooks.wantToRead}/>
-                        <Bookshelf bookshelfTitle='Read' shelfBooks={this.props.userBooks.read}/>
+                        <Bookshelf bookshelfTitle='Currently Reading' shelfBooks={this.props.userBooks.filter(book => book.shelf === 'currentlyReading' )}/>
+                        <Bookshelf bookshelfTitle='Want to Read' shelfBooks={this.props.userBooks.filter(book => book.shelf === 'wantToRead' )}/>
+                        <Bookshelf bookshelfTitle='Read' shelfBooks={this.props.userBooks.filter(book => book.shelf === 'read' )}/>
                     </div>
                 </div>
             </div>
@@ -23,11 +23,7 @@ class MyReads extends Component {
 }
 
 MyReads.propTypes = {
-    userBooks: PropTypes.exact({
-        currentlyReading: PropTypes.array.isRequired,
-        wantToRead: PropTypes.array.isRequired,
-        read: PropTypes.array.isRequired,
-    })
+    userBooks: PropTypes.array.isRequired,
 };
 
 export default MyReads;
