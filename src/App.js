@@ -20,13 +20,18 @@ class BooksApp extends React.Component {
           });
   }
 
+  onBookShelfChange(newValue, bookTitle) {
+      console.log(`bookshelfChanged to ${newValue} for ${bookTitle}`);
+      //change "shelf" value for the given book by the BookAPI and in App state
+  }
+
   render() {
       return (
           <div className='app'>
               <Route path='/search' component={SearchPage} />
               <Route exact path='/' render={()=>(
                   <>
-                      <MyReads userBooks={this.state.userBooks} />
+                      <MyReads userBooks={this.state.userBooks} onBookShelfChange={this.onBookShelfChange}/>
                       <div className="open-search">
                           <Link
                               to='/search'
