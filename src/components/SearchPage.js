@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-
-import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 class SearchPage extends Component {
   state = {
@@ -17,7 +16,7 @@ render() {
     return (
         <div className="search-books">
             <div className="search-books-bar">
-                <button className="close-search" onClick={this.props.onReturnClick}>Close</button>
+                <Link className="close-search" to='/'>Close</Link>
                 <div className="search-books-input-wrapper">
                     <input
                         type="text"
@@ -34,9 +33,5 @@ render() {
     );
 }
 }
-
-SearchPage.propTypes = {
-    onReturnClick: PropTypes.func.isRequired
-};
 
 export default SearchPage;

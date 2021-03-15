@@ -4,21 +4,23 @@ import PropTypes from 'prop-types';
 import BookShelfChanger from './BookShelfChanger';
 
 export function Book(props) {
+    const handleSelectChange = newValue => {
+        props.onBookShelfChange(newValue, props.book);
+    };
     return (
         <div className="book">
             <div className="book-top">
-                <div className="book-cover" style={{width: 128, height: 193, backgroundImage: `url("${props.bookCoverURL}")`}}/>
-                <BookShelfChanger />
+                <div className="book-cover" style={{width: 128, height: 193, backgroundImage: `url("${props.book.imageLinks.thumbnail}")`}}/>
+                <BookShelfChanger selectedValue={props.book.shelf} onBookShelfChange={handleSelectChange}/>
             </div>
-            <div className="book-title">{props.bookTitle}</div>
-            <div className="book-authors">{props.bookAuthors.join(', ')}</div>
+            <div className="book-title">{props.book.title}</div>
+            <div className="book-authors">{props.book.authors.join(', ')}</div>
         </div>);
 }
 
 Book.propTypes = {
-    bookCoverURL: PropTypes.string.isRequired,
-    bookTitle: PropTypes.string.isRequired,
-    bookAuthors: PropTypes.array.isRequired,
+    book: PropTypes.object.isRequired,
+    onBookShelfChange: PropTypes.func.isRequired,
 };
 
 export default Book;

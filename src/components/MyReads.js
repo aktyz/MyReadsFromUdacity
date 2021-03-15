@@ -12,9 +12,24 @@ class MyReads extends Component {
                 </div>
                 <div className="list-books-content">
                     <div>
-                        <Bookshelf bookshelfTitle='Currently Reading' shelfBooks={this.props.userBooks.filter(book => book.shelf === 'currentlyReading' )}/>
-                        <Bookshelf bookshelfTitle='Want to Read' shelfBooks={this.props.userBooks.filter(book => book.shelf === 'wantToRead' )}/>
-                        <Bookshelf bookshelfTitle='Read' shelfBooks={this.props.userBooks.filter(book => book.shelf === 'read' )}/>
+                        <Bookshelf
+                            key='Currently Reading'
+                            bookshelfTitle='Currently Reading'
+                            shelfBooks={this.props.userBooks.filter(book => book.shelf === 'currentlyReading' )}
+                            onBookShelfChange={this.props.onBookShelfChange}
+                        />
+                        <Bookshelf
+                            key='Want to Read'
+                            bookshelfTitle='Want to Read'
+                            shelfBooks={this.props.userBooks.filter(book => book.shelf === 'wantToRead' )}
+                            onBookShelfChange={this.props.onBookShelfChange}
+                        />
+                        <Bookshelf
+                            key='Read'
+                            bookshelfTitle='Read'
+                            shelfBooks={this.props.userBooks.filter(book => book.shelf === 'read' )}
+                            onBookShelfChange={this.props.onBookShelfChange}
+                        />
                     </div>
                 </div>
             </div>
@@ -24,6 +39,7 @@ class MyReads extends Component {
 
 MyReads.propTypes = {
     userBooks: PropTypes.array.isRequired,
+    onBookShelfChange: PropTypes.func.isRequired,
 };
 
 export default MyReads;
