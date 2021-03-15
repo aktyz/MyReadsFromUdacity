@@ -10,12 +10,9 @@ export function Bookshelf(props) {
             <div className="bookshelf-books">
                 <ol className="books-grid">
                     {props.shelfBooks.map((book) => (
-                        <li key={book.title}>
+                        <li key={book.id}>
                             <Book
-                                bookShelf={book.shelf}
-                                bookTitle={book.title}
-                                bookAuthors={book.authors}
-                                bookCoverURL={book.imageLinks.thumbnail}
+                                book={book}
                                 onBookShelfChange={props.onBookShelfChange}
                             />
                         </li>
