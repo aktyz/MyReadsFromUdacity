@@ -6,7 +6,11 @@ import * as BooksAPI from './BooksAPI';
 import { Link, Route } from 'react-router-dom';
 
 class BooksApp extends React.Component {
-
+    constructor(props) {
+        super(props);
+        this.onBookShelfChange = this.onBookShelfChange.bind(this);
+        this.changeBookShelf = this.changeBookShelf.bind(this);
+    }
   state = {
       userBooks: [],
   }
@@ -20,11 +24,11 @@ class BooksApp extends React.Component {
           });
   }
 
-  changeBookShelf = (newShelf, book) => {
+  changeBookShelf (newShelf, book) {
       return { ...book, shelf: newShelf };
   }
 
-  onBookShelfChange = (newValue, newBook) => {
+  onBookShelfChange(newValue, newBook) {
       if (newBook.shelf === 'none') {
           const newBookOnNewShelf = this.changeBookShelf(newValue, newBook);
           this.setState((prevState) => ({
@@ -50,7 +54,10 @@ class BooksApp extends React.Component {
               <Route path='/search' component={SearchPage} />
               <Route exact path='/' render={()=>(
                   <>
-                      <MyReads userBooks={this.state.userBooks} onBookShelfChange={this.onBookShelfChange}/>
+                      <MyReads
+                          userBooks={this.state.userBooks}
+                          onBookShelfChange={this.onBookShelfChange}
+                      />
                       <div className="open-search">
                           <Link
                               to='/search'

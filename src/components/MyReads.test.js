@@ -5,7 +5,11 @@ import { userBooksMock } from './__mock__/mockData';
 
 describe('MyReads', () => {
     it('should render three bookshelfs', () => {
-        const myReadsComponent = render(<MyReads userBooks = { userBooksMock } />);
+        const onBookShelfChangeMock = jest.fn();
+        const myReadsComponent = render(
+            <MyReads
+                userBooks={userBooksMock}
+                onBookShelfChange={onBookShelfChangeMock} />);
         expect(myReadsComponent).toMatchSnapshot();
     });
 });

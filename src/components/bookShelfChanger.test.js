@@ -4,7 +4,12 @@ import BookShelfChanger from './BookShelfChanger';
 
 describe('BookShelfChanger', () => {
     it('should render change shelf menu', () => {
-        const bookShelfChangerComponent = render(<BookShelfChanger />);
+        const onBookShelfChangeMock = jest.fn();
+        const bookShelfChangerComponent = render(
+            <BookShelfChanger
+                selectedValue='read'
+                onBookShelfChange={onBookShelfChangeMock}/>
+        );
         expect(bookShelfChangerComponent).toMatchSnapshot();
     });
 });
