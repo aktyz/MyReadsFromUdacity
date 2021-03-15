@@ -21,13 +21,10 @@ class BooksApp extends React.Component {
   }
 
   changeBookShelf = (newShelf, book) => {
-      book.shelf = newShelf;
-      return book;
+      return { ...book, shelf: newShelf };
   }
 
   onBookShelfChange = (newValue, newBook) => {
-      console.log(`bookshelfChanged to ${newValue} for ${newBook.title}`);
-      //change "shelf" value for the given book by the BookAPI and in App state
       if (newBook.shelf === 'none') {
           const newBookOnNewShelf = this.changeBookShelf(newValue, newBook);
           this.setState((prevState) => ({
@@ -36,13 +33,15 @@ class BooksApp extends React.Component {
       } else
       {
           this.setState((prevState) => ({
-              userBooks: prevState.userBooks.map(book => {
-                  if (book.id === newBook.id) {
-                      this.changeBookShelf(newValue, book);
+              userBooks: prevState.userBooks.map((book) => {
+                  if(book.id === newBook.id) {
+                      return this.changeBookShelf(newValue, book);
                   }
-              })
+                  return book;
+              }),
           }));
       }
+      BooksAPI.update(newBook, newValue);
   }
 
   render() {
