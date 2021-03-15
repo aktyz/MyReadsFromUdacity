@@ -13,16 +13,19 @@ class MyReads extends Component {
                 <div className="list-books-content">
                     <div>
                         <Bookshelf
+                            key='Currently Reading'
                             bookshelfTitle='Currently Reading'
                             shelfBooks={this.props.userBooks.filter(book => book.shelf === 'currentlyReading' )}
                             onBookShelfChange={this.props.onBookShelfChange}
                         />
                         <Bookshelf
+                            key='Want to Read'
                             bookshelfTitle='Want to Read'
                             shelfBooks={this.props.userBooks.filter(book => book.shelf === 'wantToRead' )}
                             onBookShelfChange={this.props.onBookShelfChange}
                         />
                         <Bookshelf
+                            key='Read'
                             bookshelfTitle='Read'
                             shelfBooks={this.props.userBooks.filter(book => book.shelf === 'read' )}
                             onBookShelfChange={this.props.onBookShelfChange}

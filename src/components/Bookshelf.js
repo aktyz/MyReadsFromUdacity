@@ -8,7 +8,7 @@ export function Bookshelf(props) {
         <div className="bookshelf">
             <h2 className="bookshelf-title">{props.bookshelfTitle}</h2>
             <div className="bookshelf-books">
-                <ol className="books-grid">
+                <ol className="books-grid" >
                     {props.shelfBooks.map((book) => (
                         <li key={book.id}>
                             <Book
