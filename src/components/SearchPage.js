@@ -16,7 +16,7 @@ updateQuery = (query) => {
     }));
 }
 
-static getDerivedStateFromProps = () => {
+componentDidUpdate = () => {
     if(this.state.query) {
         // ask API and update queryResults
         BooksAPI.search(this.state.query).
