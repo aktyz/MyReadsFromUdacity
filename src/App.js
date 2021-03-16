@@ -29,7 +29,7 @@ class BooksApp extends React.Component {
   }
 
   onBookShelfChange(newValue, newBook) {
-      if (newBook.shelf === 'none') {
+      if (newBook.shelf && newBook.shelf == 'none') {
           const newBookOnNewShelf = this.changeBookShelf(newValue, newBook);
           this.setState((prevState) => ({
               userBooks: prevState.userBooks.concat([newBookOnNewShelf]),
@@ -51,8 +51,16 @@ class BooksApp extends React.Component {
   render() {
       return (
           <div className='app'>
-              <Route path='/search' component={SearchPage} />
-              <Route exact path='/' render={()=>(
+              <Route path='/search'
+                  render={( { history } ) => (
+                      <SearchPage
+                          onBookShelfChange={(newShelf, aBook) => {
+                              this.onBookShelfChange(newShelf, aBook);
+                              history.push('/');
+                          }}
+                      />
+                  )} />
+              <Route exact path='/' render={() => (
                   <>
                       <MyReads
                           userBooks={this.state.userBooks}

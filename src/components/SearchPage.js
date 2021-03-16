@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import * as BooksAPI from '../BooksAPI';
 import Book from './Book';
@@ -14,21 +15,22 @@ updateQuery = (query) => {
     this.setState(() => ({
         query
     }));
-}
-
-componentDidUpdate = () => {
     if(this.state.query.length > 2) {
         BooksAPI.search(this.state.query).
             then((queryResults) => {
-                this.setState(() => {
-                    queryResults;
-                });
+                this.setState(() => ({
+                    queryResults
+                }));
             });
+    } else {
+        this.setState(() => ({
+            queryResults: []
+        }));
     }
 }
 
 render() {
-    console.log(this.state.queryResults);
+    console.log(this.state.query.length);
     return (
         <div className="search-books">
             <div className="search-books-bar">
@@ -43,20 +45,24 @@ render() {
                 </div>
             </div>
             <div className="search-books-results">
-                <ol className="books-grid"></ol>
-                {this.state.queryResults.map((book) => (
-                    <li key={book.id}>
-                        <Book
-                            book={book}
-                            //onBookShelfChange={props.onBookShelfChange}
-                        />
-                    </li>
-                ))}
+                <ol className="books-grid">
+                    {this.state.query.length > 2 && this.state.queryResults.map((book) => (
+                        <li key={book.id}>
+                            <Book
+                                book={book}
+                                onBookShelfChange={this.props.onBookShelfChange}
+                            />
+                        </li>
+                    ))}
+                </ol>
             </div>
-            <p>{this.state.query}</p>
         </div>
     );
 }
 }
+
+SearchPage.propTypes = {
+    onBookShelfChange: PropTypes.func.isRequired,
+};
 
 export default SearchPage;
