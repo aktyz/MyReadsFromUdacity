@@ -17,19 +17,18 @@ updateQuery = (query) => {
 }
 
 componentDidUpdate = () => {
-    if(this.state.query) {
-        // ask API and update queryResults
+    if(this.state.query.length > 2) {
         BooksAPI.search(this.state.query).
             then((queryResults) => {
                 this.setState(() => {
                     queryResults;
                 });
             });
-        return true;
-    } else return false;
+    }
 }
 
 render() {
+    console.log(this.state.queryResults);
     return (
         <div className="search-books">
             <div className="search-books-bar">
