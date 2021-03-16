@@ -12,7 +12,7 @@ class SearchPage extends Component {
 
 updateQuery = (query) => {
     this.setState(() => ({
-        query: query
+        query
     }));
 }
 
