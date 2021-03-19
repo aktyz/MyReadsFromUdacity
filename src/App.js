@@ -29,7 +29,7 @@ class BooksApp extends React.Component {
   }
 
   onBookShelfChange(newValue, newBook) {
-      if (newBook.shelf && newBook.shelf == 'none') {
+      if (newBook.shelf && newBook.shelf === 'none') {
           const newBookOnNewShelf = this.changeBookShelf(newValue, newBook);
           this.setState((prevState) => ({
               userBooks: prevState.userBooks.concat([newBookOnNewShelf]),

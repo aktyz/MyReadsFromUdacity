@@ -30,7 +30,6 @@ updateQuery = (query) => {
 }
 
 render() {
-    console.log(this.state.query.length);
     return (
         <div className="search-books">
             <div className="search-books-bar">

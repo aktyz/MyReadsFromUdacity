@@ -12,9 +12,8 @@ export function BookShelfChanger(props) {
     return (
         <div className="book-shelf-changer">
             <select
-                onChange={(event, history) => {
+                onChange={(event) => {
                     handleOnChange(event);
-                    history.push('/');
                 }}
                 value={props.selectedValue} >
                 <option value="move" disabled>Move to...</option>
