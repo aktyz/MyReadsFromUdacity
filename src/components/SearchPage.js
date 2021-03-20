@@ -9,17 +9,22 @@ class SearchPage extends Component {
   state = {
       query: '',
       queryResults: [],
+      searchError: false,
   }
 
-updateQuery = (query) => {
-    this.setState(() => ({
-        query
-    }));
-    if(this.state.query.length > 2) {
-        BooksAPI.search(this.state.query).
+search = (query) => {
+    if(this.state.query.length > 0) {
+        BooksAPI.search(query).
             then((queryResults) => {
                 this.setState(() => ({
-                    queryResults
+                    queryResults,
+                    searchError: false,
+                }));
+            }).
+            catch(() => {
+                this.setState(() => ({
+                    queryResults: [],
+                    searchError: true
                 }));
             });
     } else {
@@ -27,6 +32,12 @@ updateQuery = (query) => {
             queryResults: []
         }));
     }
+}
+
+updateQuery = (query) => {
+    this.setState(() => ({
+        query
+    }), this.search(query));
 }
 
 render() {
@@ -45,7 +56,7 @@ render() {
             </div>
             <div className="search-books-results">
                 <ol className="books-grid">
-                    {this.state.query.length > 2 && this.state.queryResults.map((book) => (
+                    {this.state.queryResults && this.state.queryResults.map((book) => (
                         <li key={book.id}>
                             <Book
                                 book={book}
