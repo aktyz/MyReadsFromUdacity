@@ -9,7 +9,6 @@ class BooksApp extends React.Component {
     constructor(props) {
         super(props);
         this.onBookShelfChange = this.onBookShelfChange.bind(this);
-        this.changeBookShelf = this.changeBookShelf.bind(this);
     }
   state = {
       userBooks: [],
@@ -24,29 +23,14 @@ class BooksApp extends React.Component {
           });
   }
 
-  changeBookShelf (newShelf, book) {
-      return { ...book, shelf: newShelf };
-  }
-
-  onBookShelfChange(newValue, newBook) {
-      const bookOnNewShelf = { ...newBook, shelf: newValue };
-
-      if(newBook.shelf && newBook.shelf === 'none') {
-          BooksAPI.update(newBook, newValue)
-              .then(this.setState((prevState) => ({
-                  userBooks: prevState.userBooks.concat([bookOnNewShelf])
-              })));
-      } else {
-          BooksAPI.update(newBook, newValue)
-              .then(this.setState((prevState) => ({
-                  userBooks: prevState.userBooks.map((book) => {
-                      if(book.id === newBook.id) {
-                          return bookOnNewShelf;
-                      }
-                      return book;
-                  })
-              })));
-      }
+  async onBookShelfChange(newValue, newBook) {
+      await BooksAPI.update(newBook, newValue);
+      await BooksAPI.getAll()
+          .then((userBooks) => {
+              this.setState(() => ({
+                  userBooks
+              }));
+          });
   }
 
   render() {

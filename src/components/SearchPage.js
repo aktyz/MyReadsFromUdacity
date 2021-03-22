@@ -17,7 +17,11 @@ search = (query) => {
         BooksAPI.search(query).
             then((queryResults) => {
                 this.setState(() => ({
-                    queryResults,
+                    queryResults: queryResults ? queryResults.filter((book) => (
+                        this.props.userBooksIds.every(element => (
+                            element !== book.id
+                        ))
+                    )) : [],
                     searchError: false,
                 }));
             }).
@@ -57,11 +61,7 @@ render() {
             <div className="search-books-results">
                 {this.state.query ?
                     <ol className="books-grid">
-                        {this.state.queryResults && this.state.queryResults.filter((book) => (
-                            this.props.userBooksIds.every(element => (
-                                element !== book.id
-                            ))
-                        )).map((book) => (
+                        {this.state.queryResults && this.state.queryResults.map((book) => (
                             <li key={book.id}>
                                 <Book
                                     book={book}
