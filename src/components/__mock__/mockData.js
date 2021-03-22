@@ -6,6 +6,7 @@ export const userBooksMock = [{
     'imageLinks': {
         'thumbnail': 'bookCoverURLMock'
     },
+    'id': '123',
 }
 ];
 
@@ -16,4 +17,5 @@ export const bookMock = {
     'imageLinks': {
         'thumbnail': 'bookCoverURLMock'
     },
+    'id': '123',
 };

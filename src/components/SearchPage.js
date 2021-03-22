@@ -1,15 +1,43 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
+import * as BooksAPI from '../BooksAPI';
+import Book from './Book';
 
 class SearchPage extends Component {
   state = {
-      query: ''
+      query: '',
+      queryResults: [],
+      searchError: false,
   }
+
+search = (query) => {
+    if(this.state.query.length > 0) {
+        BooksAPI.search(query).
+            then((queryResults) => {
+                this.setState(() => ({
+                    queryResults,
+                    searchError: false,
+                }));
+            }).
+            catch(() => {
+                this.setState(() => ({
+                    queryResults: [],
+                    searchError: true
+                }));
+            });
+    } else {
+        this.setState(() => ({
+            queryResults: []
+        }));
+    }
+}
 
 updateQuery = (query) => {
     this.setState(() => ({
-        query: query
-    }));
+        query
+    }), this.search(query));
 }
 
 render() {
@@ -27,11 +55,26 @@ render() {
                 </div>
             </div>
             <div className="search-books-results">
-                <ol className="books-grid"></ol>
+                {this.state.query ?
+                    <ol className="books-grid">
+                        {this.state.queryResults && this.state.queryResults.map((book) => (
+                            <li key={book.id}>
+                                <Book
+                                    book={book}
+                                    onBookShelfChange={this.props.onBookShelfChange}
+                                />
+                            </li>
+                        ))}
+                    </ol>
+                    : <p>No search results to display</p>}
             </div>
         </div>
     );
 }
 }
+
+SearchPage.propTypes = {
+    onBookShelfChange: PropTypes.func.isRequired,
+};
 
 export default SearchPage;

@@ -29,30 +29,38 @@ class BooksApp extends React.Component {
   }
 
   onBookShelfChange(newValue, newBook) {
-      if (newBook.shelf === 'none') {
-          const newBookOnNewShelf = this.changeBookShelf(newValue, newBook);
-          this.setState((prevState) => ({
-              userBooks: prevState.userBooks.concat([newBookOnNewShelf]),
-          }));
-      } else
-      {
-          this.setState((prevState) => ({
-              userBooks: prevState.userBooks.map((book) => {
-                  if(book.id === newBook.id) {
-                      return this.changeBookShelf(newValue, book);
-                  }
-                  return book;
-              }),
-          }));
+      const bookOnNewShelf = { ...newBook, shelf: newValue };
+      if(newBook.shelf && newBook.shelf === 'none') {
+          BooksAPI.update(newBook, newValue)
+              .then(this.setState((prevState) => ({
+                  userBooks: prevState.userBooks.concat([bookOnNewShelf])
+              })));
+      } else {
+          BooksAPI.update(newBook, newValue)
+              .then(this.setState((prevState) => ({
+                  userBooks: prevState.userBooks.map((book) => {
+                      if(book.id === newBook.id) {
+                          return bookOnNewShelf;
+                      }
+                      return book;
+                  })
+              })));
       }
-      BooksAPI.update(newBook, newValue);
   }
 
   render() {
       return (
           <div className='app'>
-              <Route path='/search' component={SearchPage} />
-              <Route exact path='/' render={()=>(
+              <Route path='/search'
+                  render={( { history } ) => (
+                      <SearchPage
+                          onBookShelfChange={(newShelf, aBook) => {
+                              this.onBookShelfChange(newShelf, aBook);
+                              history.push('/');
+                          }}
+                      />
+                  )} />
+              <Route exact path='/' render={() => (
                   <>
                       <MyReads
                           userBooks={this.state.userBooks}

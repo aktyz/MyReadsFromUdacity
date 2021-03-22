@@ -5,13 +5,15 @@ import SearchPage from './SearchPage';
 
 describe('SearchPage', () => {
     it('should render search field', () => {
-        const searchPageComponent = render(<BrowserRouter><SearchPage /></BrowserRouter >);
+        const onBookShelfChangeMock = jest.fn();
+        const searchPageComponent = render(<BrowserRouter><SearchPage onBookShelfChange={onBookShelfChangeMock} /></BrowserRouter >);
         expect(searchPageComponent).toMatchSnapshot();
     });
 
     it('should update component state when a text is input', () => {
         const inputMock = 'Lahiri';
-        const searchPageComponent = render(<BrowserRouter><SearchPage /></BrowserRouter >);
+        const onBookShelfChangeMock = jest.fn();
+        const searchPageComponent = render(<BrowserRouter><SearchPage onBookShelfChange={onBookShelfChangeMock} /></BrowserRouter >);
         fireEvent.change(searchPageComponent.getByPlaceholderText(/Search by title or author/i), {
             target: {
                 value: inputMock
