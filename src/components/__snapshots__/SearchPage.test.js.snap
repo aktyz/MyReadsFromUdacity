@@ -30,9 +30,9 @@ Object {
         <div
           class="search-books-results"
         >
-          <ol
-            class="books-grid"
-          />
+          <p>
+            No search results to display
+          </p>
         </div>
       </div>
     </div>
@@ -63,9 +63,9 @@ Object {
       <div
         class="search-books-results"
       >
-        <ol
-          class="books-grid"
-        />
+        <p>
+          No search results to display
+        </p>
       </div>
     </div>
   </div>,

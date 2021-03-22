@@ -55,16 +55,18 @@ render() {
                 </div>
             </div>
             <div className="search-books-results">
-                <ol className="books-grid">
-                    {this.state.queryResults && this.state.queryResults.map((book) => (
-                        <li key={book.id}>
-                            <Book
-                                book={book}
-                                onBookShelfChange={this.props.onBookShelfChange}
-                            />
-                        </li>
-                    ))}
-                </ol>
+                {this.state.query ?
+                    <ol className="books-grid">
+                        {this.state.queryResults && this.state.queryResults.map((book) => (
+                            <li key={book.id}>
+                                <Book
+                                    book={book}
+                                    onBookShelfChange={this.props.onBookShelfChange}
+                                />
+                            </li>
+                        ))}
+                    </ol>
+                    : <p>No search results to display</p>}
             </div>
         </div>
     );

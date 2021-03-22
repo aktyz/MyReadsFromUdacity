@@ -10,6 +10,12 @@ body, .app {
   background: white;
 }
 
+p {
+  padding: 15px 50px;
+  font-size: 1.00em;
+  color: #665151;
+}
+
 /* main page */
 
 .list-books-title {
