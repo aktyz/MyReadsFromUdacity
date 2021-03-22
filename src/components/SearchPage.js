@@ -41,7 +41,6 @@ updateQuery = (query) => {
 }
 
 render() {
-    console.log(this.props.userBooksIds);
     return (
         <div className="search-books">
             <div className="search-books-bar">
