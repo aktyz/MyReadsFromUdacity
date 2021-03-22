@@ -30,6 +30,7 @@ class BooksApp extends React.Component {
 
   onBookShelfChange(newValue, newBook) {
       const bookOnNewShelf = { ...newBook, shelf: newValue };
+
       if(newBook.shelf && newBook.shelf === 'none') {
           BooksAPI.update(newBook, newValue)
               .then(this.setState((prevState) => ({
@@ -58,6 +59,7 @@ class BooksApp extends React.Component {
                               this.onBookShelfChange(newShelf, aBook);
                               history.push('/');
                           }}
+                          userBooksIds={this.state.userBooks.map((book) => (book.id))}
                       />
                   )} />
               <Route exact path='/' render={() => (
