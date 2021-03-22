@@ -6,9 +6,6 @@ import * as BooksAPI from '../BooksAPI';
 import Book from './Book';
 
 class SearchPage extends Component {
-    constructor(props) {
-        super(props);
-    }
   state = {
       query: '',
       queryResults: [],
@@ -49,7 +46,6 @@ updateQuery = (query) => {
 }
 
 render() {
-    console.log(this.state.queryResults);
     return (
         <div className="search-books">
             <div className="search-books-bar">
