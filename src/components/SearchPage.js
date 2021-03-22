@@ -12,16 +12,17 @@ class SearchPage extends Component {
       searchError: false,
   }
 
+  checkShelf = (book) => {
+      const userBook = this.props.userBooksIds.find(element => element.id === book.id);
+      return userBook ? { ...book, shelf: userBook.shelf } : book;
+  }
+
 search = (query) => {
     if(this.state.query.length > 0) {
         BooksAPI.search(query).
             then((queryResults) => {
                 this.setState(() => ({
-                    queryResults: queryResults ? queryResults.filter((book) => (
-                        this.props.userBooksIds.every(element => (
-                            element !== book.id
-                        ))
-                    )) : [],
+                    queryResults: queryResults ? queryResults.map((book) => (this.checkShelf(book))) : [],
                     searchError: false,
                 }));
             }).

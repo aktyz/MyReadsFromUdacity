@@ -12,7 +12,6 @@ export function Book(props) {
                     style={{width: 128, height: 193, backgroundImage: `url("${props.book.imageLinks ? props.book.imageLinks.thumbnail : ''}")`}}/>
                 <BookShelfChanger
                     book={props.book}
-                    selectedValue={props.book.shelf ? props.book.shelf : 'none'}
                     onBookShelfChange={props.onBookShelfChange}/>
             </div>
             <div className="book-title">{props.book.title ? props.book.title : ''}</div>

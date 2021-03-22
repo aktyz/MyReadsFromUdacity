@@ -37,13 +37,13 @@ class BooksApp extends React.Component {
       return (
           <div className='app'>
               <Route path='/search'
-                  render={( { history } ) => (
+                  render={() => (
                       <SearchPage
-                          onBookShelfChange={(newShelf, aBook) => {
-                              this.onBookShelfChange(newShelf, aBook);
-                              history.push('/');
-                          }}
-                          userBooksIds={this.state.userBooks.map((book) => (book.id))}
+                          onBookShelfChange={this.onBookShelfChange}
+                          userBooksIds={this.state.userBooks.map((book) => ({
+                              id: book.id,
+                              shelf: book.shelf,
+                          }))}
                       />
                   )} />
               <Route exact path='/' render={() => (
