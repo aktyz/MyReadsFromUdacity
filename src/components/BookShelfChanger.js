@@ -2,9 +2,11 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 
 export function BookShelfChanger(props) {
+    const [shelf, setShelf] = React.useState(props.book.shelf);
     const handleOnChange = event => {
         event.preventDefault();
         const newValue = event.target.value;
+        setShelf(newValue);
         if(props.onBookShelfChange) {
             props.onBookShelfChange(newValue, props.book);
         }
@@ -15,7 +17,7 @@ export function BookShelfChanger(props) {
                 onChange={(event) => {
                     handleOnChange(event);
                 }}
-                value={props.selectedValue} >
+                value={shelf ? shelf : 'none'} >
                 <option value="move" disabled>Move to...</option>
                 <option value="currentlyReading">Currently Reading</option>
                 <option value="wantToRead">Want to Read</option>
@@ -27,7 +29,6 @@ export function BookShelfChanger(props) {
 
 BookShelfChanger.propTypes = {
     book: PropTypes.object.isRequired,
-    selectedValue: PropTypes.string.isRequired,
     onBookShelfChange: PropTypes.func.isRequired,
 };
 

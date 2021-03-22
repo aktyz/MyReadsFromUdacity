@@ -6,10 +6,18 @@ import * as BooksAPI from '../BooksAPI';
 import Book from './Book';
 
 class SearchPage extends Component {
+    constructor(props) {
+        super(props);
+    }
   state = {
       query: '',
       queryResults: [],
       searchError: false,
+  }
+
+  checkShelf = (book) => {
+      const userBook = this.props.userBooksIds.find(element => element.id === book.id);
+      return userBook ? { ...book, shelf: userBook.shelf } : book;
   }
 
 search = (query) => {
@@ -17,11 +25,7 @@ search = (query) => {
         BooksAPI.search(query).
             then((queryResults) => {
                 this.setState(() => ({
-                    queryResults: queryResults ? queryResults.filter((book) => (
-                        this.props.userBooksIds.every(element => (
-                            element !== book.id
-                        ))
-                    )) : [],
+                    queryResults: queryResults ? queryResults.map((book) => (this.checkShelf(book))) : [],
                     searchError: false,
                 }));
             }).
@@ -45,6 +49,7 @@ updateQuery = (query) => {
 }
 
 render() {
+    console.log(this.state.queryResults);
     return (
         <div className="search-books">
             <div className="search-books-bar">
