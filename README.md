@@ -13,10 +13,6 @@ The app should run on [localhost:3000](http://localhost:3000/).
 
 # Rest of the original README to be removed before submitting
 
-## Next steps
-- handle Search query on the Search package
-- make sure Search query results are checking user shelfs books
-
 ## Instructions for Git Commit messages
 
 Follow Udacity Git Commit Message [Style Guide](https://udacity.github.io/git-styleguide/).

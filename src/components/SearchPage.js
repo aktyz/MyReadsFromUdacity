@@ -57,7 +57,11 @@ render() {
             <div className="search-books-results">
                 {this.state.query ?
                     <ol className="books-grid">
-                        {this.state.queryResults && this.state.queryResults.map((book) => (
+                        {this.state.queryResults && this.state.queryResults.filter((book) => (
+                            this.props.userBooksIds.every(element => (
+                                element !== book.id
+                            ))
+                        )).map((book) => (
                             <li key={book.id}>
                                 <Book
                                     book={book}
@@ -75,6 +79,7 @@ render() {
 
 SearchPage.propTypes = {
     onBookShelfChange: PropTypes.func.isRequired,
+    userBooksIds: PropTypes.array.isRequired,
 };
 
 export default SearchPage;
