@@ -22,7 +22,7 @@ search = (query) => {
         BooksAPI.search(query).
             then((queryResults) => {
                 this.setState(() => ({
-                    queryResults: queryResults ? queryResults.map((book) => (this.checkShelf(book))) : [],
+                    queryResults: Array.isArray(queryResults) ? queryResults.map((book) => (this.checkShelf(book))) : [],
                     searchError: false,
                 }));
             }).
@@ -52,6 +52,7 @@ render() {
                 <Link className="close-search" to='/'>Close</Link>
                 <div className="search-books-input-wrapper">
                     <input
+                        autoFocus
                         type="text"
                         placeholder="Search by title or author"
                         value={this.state.query}
